@@ -1,0 +1,39 @@
+{
+  "name": "Bookshelf",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  "forwardPorts": [3000, 54321, 54322, 54323, 54324],
+  "portsAttributes": {
+    "3000": { "label": "Next.js", "onAutoForward": "openBrowser" },
+    "54321": { "label": "Supabase API" },
+    "54322": { "label": "Supabase DB" },
+    "54323": { "label": "Supabase Studio", "onAutoForward": "openPreview" },
+    "54324": { "label": "Supabase Inbucket" }
+  },
+
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "postCreateCommand": "yarn --prefix bookshelf",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-typescript-next",
+        "Prisma.prisma",
+        "mikestead.dotenv"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "js/ts.tsdk.path": "bookshelf/node_modules/typescript/lib"
+      }
+    }
+  }
+}
